@@ -3,13 +3,13 @@ variable location{
         type = string
 }
 variable rg_name{
-        default = "maruthirg"
+        default = "chandanarg"
         type = string
 }
 
 variable "vnet_name" {
   type    = string
-  default = "maruthi-vnet"
+  default = "chandana-vnet"
 }
 
 variable "vnet_address_space" {
@@ -19,7 +19,7 @@ variable "vnet_address_space" {
 
 variable "subnet_name" {
   type    = string
-  default = "maruthi-subnet"
+  default = "chandana-subnet"
 }
 
 variable "subnet_address_prefixes" {
@@ -30,25 +30,25 @@ variable "subnet_address_prefixes" {
 variable "nsg_name" {
   type        = string
   description = "Network Security Group name"
-  default     = "maruthi-nsg"
+  default     = "chandana-nsg"
 }
 
 variable "public_ip_name" {
   type        = string
   description = "Public IP name"
-  default     = "maruthi-pip"
+  default     = "chandana-pip"
 }
 
 variable "nic_name" {
   type        = string
   description = "Network Interface name"
-  default     = "maruthi-nic"
+  default     = "chandana-nic"
 }
 
 variable "vm_name" {
   type        = string
   description = "Linux VM name"
-  default     = "maruthi-linux-vm01"
+  default     = "chandana-linux-vm01"
 }
 
 variable "vm_size" {
