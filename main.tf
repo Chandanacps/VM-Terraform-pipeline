@@ -1,24 +1,24 @@
-resource "azurerm_resource_group" "maruthirg" {
+resource "azurerm_resource_group" "chandanarg" {
   location = var.location
   name     = var.rg_name
 }
 resource "azurerm_virtual_network" "vnet" {
   name                = var.vnet_name
-  location            = azurerm_resource_group.maruthirg.location
-  resource_group_name = azurerm_resource_group.maruthirg.name
+  location            = azurerm_resource_group.chandanarg.location
+  resource_group_name = azurerm_resource_group.chandanarg.name
   address_space       = var.vnet_address_space
 }
 
 resource "azurerm_subnet" "subnet" {
   name                 = var.subnet_name
-  resource_group_name  = azurerm_resource_group.maruthirg.name
+  resource_group_name  = azurerm_resource_group.chandanarg.name
   virtual_network_name = azurerm_virtual_network.vnet.name
   address_prefixes     = var.subnet_address_prefixes
 }
 resource "azurerm_network_security_group" "nsg" {
   name                = var.nsg_name
-  location            = azurerm_resource_group.maruthirg.location
-  resource_group_name = azurerm_resource_group.maruthirg.name
+  location            = azurerm_resource_group.chandanarg.location
+  resource_group_name = azurerm_resource_group.chandanarg.name
 
   security_rule {
     name                       = "Allow-SSH"
@@ -40,16 +40,16 @@ resource "azurerm_subnet_network_security_group_association" "subnet_nsg" {
 
 resource "azurerm_public_ip" "pip" {
   name                = var.public_ip_name
-  location            = azurerm_resource_group.maruthirg.location
-  resource_group_name = azurerm_resource_group.maruthirg.name
+  location            = azurerm_resource_group.chandanarg.location
+  resource_group_name = azurerm_resource_group.chandanarg.name
   allocation_method   = "Static"
   sku                 = "Standard"
 }
 
 resource "azurerm_network_interface" "nic" {
   name                = var.nic_name
-  location            = azurerm_resource_group.maruthirg.location
-  resource_group_name = azurerm_resource_group.maruthirg.name
+  location            = azurerm_resource_group.chandanarg.location
+  resource_group_name = azurerm_resource_group.chandanarg.name
 
   ip_configuration {
     name                          = "internal"
@@ -61,8 +61,8 @@ resource "azurerm_network_interface" "nic" {
 
 resource "azurerm_linux_virtual_machine" "vm" {
   name                = var.vm_name
-  location            = azurerm_resource_group.maruthirg.location
-  resource_group_name = azurerm_resource_group.maruthirg.name
+  location            = azurerm_resource_group.chandanarg.location
+  resource_group_name = azurerm_resource_group.chandanarg.name
   size                = var.vm_size
 
   admin_username = var.admin_username
